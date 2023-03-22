@@ -79,7 +79,6 @@ const navLinks = [
 
   document.addEventListener("click", (e) => {
     if (isNavOpen) {
-      e.preventDefault();
       isNavOpen = false;
       nav.classList.toggle("opacity-0");
       nav.classList.toggle("pointer-events-none");
