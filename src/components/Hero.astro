@@ -1,0 +1,37 @@
+---
+import heroImg from "../assets/hero-img.webp";
+---
+
+<main
+  class="container h-[80vh] md:h-auto mx-auto py-6 px-4 md:py-20 flex flex-col md:flex-row gap-6 justify-evenly items-center bg-blue-100/10 rounded-3xl mt-4"
+>
+  <img
+    src={heroImg.src}
+    alt="hero image"
+    class="max-w-[200px] md:max-w-[400px] shadow-xl shadow-blue-400/20"
+  />
+  <div>
+    <h2
+      class="font-bold text-4xl text-center md:text-left lg:text-6xl lg:leading-[4.3rem] max-w-2xl"
+    >
+      The Step by step guide to learn
+      <span
+        class="bg-gradient-to-r bg-clip-text from-blue-800 to-blue-500 text-transparent"
+      >
+        Flutter
+      </span>
+    </h2>
+    <div class="flex flex-col gap-4 md:gap-0 items-center md:flex-row mt-8">
+      <input
+        type="email"
+        class="w-full max-w-lg p-4 outline-none focus:ring rounded-lg md:rounded-r-0 text-lg bg-blue-100/60 text-blue-900"
+        placeholder="Enter your email"
+      />
+      <button
+        class="bg-gradient-to-r from-blue-800 to-blue-500 text-white p-4 rounded-lg md:rounded-l-0 text-lg font-bold outline-none focus:ring active:scale-95 transition-all"
+      >
+        Get it for free
+      </button>
+    </div>
+  </div>
+</main>
