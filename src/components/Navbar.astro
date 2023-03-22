@@ -9,8 +9,8 @@ const navLinks = [
 ];
 ---
 
-<header class="shadow">
-  <nav class="container mx-auto flex justify-between py-2">
+<header class="shadow sticky top-0 bg-white">
+  <nav class="relative container mx-auto flex flex-row justify-between py-2">
     <a
       href="/"
       class="flex items-center gap-4 px-6 outline-none focus-visible:ring rounded-md hover:bg-blue-400/10 transition-colors"
@@ -18,17 +18,43 @@ const navLinks = [
       <img src={logo.src} class="h-10 aspect-square" alt="FlutterMapp" />
       <span
         class="bg-gradient-to-r bg-clip-text from-blue-800 to-blue-500 text-transparent font-extrabold text-xl"
-        >FLUTTERMAPP</span
       >
+        FLUTTERMAPP
+      </span>
     </a>
 
-    <ul class="flex items-center gap-4">
+    <button
+      class="mr-6 p-4 md:hidden active:bg-blue-50 rounded-full"
+      aria-label="Open navigation menu"
+      aria-controls="nav-links"
+      aria-expanded="false"
+      id="nav-toggle"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25"></path>
+      </svg>
+    </button>
+
+    <ul
+      class="opacity-0 pointer-events-none md:opacity-100 md:pointer-events-auto transition-all absolute md:static w-full md:max-w-max bg-white/80 backdrop-blur-lg top-[4.8rem] md:flex flex-col md:flex-row md:items-center md:gap-4"
+      id="nav-links"
+    >
       {
         navLinks.map(({ href, label }) => (
           <li>
             <a
               href={href}
-              class="block px-6 py-4 text-lg rounded-lg hover:text-blue-800 hover:bg-blue-400/10 focus-visible:text-blue-800 transition-colors outline-none focus-visible:ring"
+              class="block px-6 py-4 text-lg text-center rounded-lg md:hover:text-blue-800 md:hover:bg-blue-400/10 active:text-blue-800 active:bg-blue-400/10 focus-visible:text-blue-800 transition-colors outline-none focus-visible:ring"
             >
               {label}
             </a>
@@ -38,3 +64,25 @@ const navLinks = [
     </ul>
   </nav>
 </header>
+
+<script lang="ts">
+  const nav = document.querySelector("#nav-links");
+  const navToggle = document.querySelector("#nav-toggle");
+  let isNavOpen = false;
+
+  navToggle.addEventListener("click", (e) => {
+    isNavOpen = !isNavOpen;
+    nav.classList.toggle("opacity-0");
+    nav.classList.toggle("pointer-events-none");
+    e.stopPropagation();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (isNavOpen) {
+      e.preventDefault();
+      isNavOpen = false;
+      nav.classList.toggle("opacity-0");
+      nav.classList.toggle("pointer-events-none");
+    }
+  });
+</script>
