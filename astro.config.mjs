@@ -5,6 +5,8 @@ import tailwind from "@astrojs/tailwind";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind()],
+  site: "https://shreyassanthu77.github.io/",
+  base: "/fluttermapp",
   markdown: {
     syntaxHighlight: false,
     // Applied to .md and .mdx files
