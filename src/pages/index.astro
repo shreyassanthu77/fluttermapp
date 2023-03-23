@@ -1,41 +1,26 @@
 ---
 import Hero from "../components/Hero.astro";
-import Navbar from "../components/Navbar.astro";
+import Layout from "../components/Layout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Fluttermapp</title>
-  </head>
-  <body class="bg-blue-50/10">
-    <Navbar />
-    <Hero />
-    <section class="container mx-auto px-4 py-20">
-      <h2 class="text-4xl md:text-5xl max-w-2xl mx-auto text-center font-bold">
-        Experience the best flutter development courses
-      </h2>
-      <p class="text-center text-xl mt-6">
-        <span
-          class="block translate-x-5 text-6xl my-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 font-bold"
-          >2,000+</span
-        >
-        students have already taken our courses
-      </p>
-      <a
-        href="#"
-        class="block max-w-max text-white bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-md px-6 py-4 mt-6 mx-auto transition-all"
-        >Start learning now</a
-      >
-    </section>
-  </body>
-</html>
+<Layout title="%s | Home">
+  <Hero />
 
-<style>
-  * {
-    -webkit-tap-highlight-color: transparent;
-  }
-</style>
+  <section class="container mx-auto px-4 py-20">
+    <h2 class="text-4xl md:text-5xl max-w-2xl mx-auto text-center font-bold">
+      Experience the best flutter development courses
+    </h2>
+    <p class="text-center text-xl mt-6">
+      <span
+        class="block translate-x-5 text-6xl my-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600 font-bold"
+        >2,000+</span
+      >
+      students have already taken our courses
+    </p>
+    <a
+      href="#"
+      class="block max-w-max text-white bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-md px-6 py-4 mt-6 mx-auto transition-all"
+      >Start learning now</a
+    >
+  </section>
+</Layout>
