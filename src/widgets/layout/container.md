@@ -12,9 +12,8 @@ class MyWidget extends StatelessWidget {
       width: 200,
       height: 200,
       color: Colors.red,
-      child: Text('Hello World'),
+      child: const Text('Hello World'),
     );
   }
 }
-
 ```

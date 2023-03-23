@@ -50,7 +50,7 @@ void main() {
               node.data.hProperties.className =
                 node.data.hProperties.className || [];
               node.data.hProperties.className.push(
-                "language-run-dartpad:theme-light:mode-flutter:null_safety-true"
+                "language-run-dartpad:theme-dark:mode-flutter:null_safety-true"
               );
             }
           });
