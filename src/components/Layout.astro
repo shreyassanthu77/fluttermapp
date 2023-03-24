@@ -2,6 +2,10 @@
 import logo from "../assets/favicon.ico";
 import Navbar from "./Navbar.astro";
 
+import instagram from "../assets/instagram.png";
+import twitter from "../assets/twitter.png";
+import youtube from "../assets/youtube.png";
+
 export interface Props {
   template?: string;
   title?: string;
@@ -24,6 +28,36 @@ if (title && title.includes("%s") && template)
   <body class="bg-blue-50/10">
     <Navbar />
     <slot />
+    <footer class="py-4 bg-gray-100">
+      <div class="flex items-center justify-center gap-6 my-2">
+        <a href="https://twitter.com/Fluttermapp" target="_blank">
+          <img class="w-9 h-9" src={twitter.src} alt="Twitter" />
+        </a>
+        <a href="https://www.instagram.com/fluttermapp/" target="_blank">
+          <img class="w-8 h-8" src={instagram.src} alt="Instagram" />
+        </a>
+        <a href="https://www.youtube.com/@FlutterMapp" target="_blank">
+          <img class="w-10 h-10" src={youtube.src} alt="YouTube" />
+        </a>
+      </div>
+      <p class="text-center font-medium">
+        ©️ 2023 <a href="https://fluttermapp.com">Fluttermapp</a>
+      </p>
+      <p class="text-center mt-2 text-gray-600">
+        Made with ❤️ by
+        <a
+          target="_blank"
+          href="https://twitter.com/Fluttermapp"
+          class="text-blue-600">Fluttermapp</a
+        >
+        and
+        <a
+          target="_blank"
+          href="https://twitter.com/shreyassanthu77"
+          class="text-blue-600">Shreyas</a
+        >
+      </p>
+    </footer>
   </body>
 </html>
 
