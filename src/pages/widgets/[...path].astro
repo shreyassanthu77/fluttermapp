@@ -64,9 +64,9 @@ const { files, title } = Astro.props;
 ---
 
 <Layout title={title}>
-  <div class="container mx-auto px-4 py-6">
+  <div class="container mx-auto px-4 py-6 min-h-[78vh]">
     <h1
-      class="my-4 text-4xl leading-[3rem] font-bold text-gray-900 flex items-center gap-3"
+      class="my-6 text-4xl leading-[3rem] font-bold text-gray-900 flex items-center gap-3"
     >
       <!-- An svg back arrow -->
       <a
@@ -94,7 +94,7 @@ const { files, title } = Astro.props;
         <>
           <a
             href={href}
-            class="block mb-4 text-xl font-bold text-blue-800 px-6 py-4 rounded hover:bg-blue-400/20 max-w-max transition-colors"
+            class="block text-xl font-bold text-blue-800 px-6 py-4 rounded hover:bg-blue-400/20 max-w-max transition-colors"
           >
             {title}
           </a>
