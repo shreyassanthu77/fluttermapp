@@ -54,14 +54,11 @@ export async function getStaticPaths() {
       files: rootDirs,
     },
   });
-  console.log(res.map((r) => r.params));
-  console.log(res.map((r) => r.props));
 
   return res;
 }
 
 const backLink = Astro.url.pathname.split("/").slice(1, -2).join("/") + "/";
-console.log(backLink);
 
 const { files, title } = Astro.props;
 ---
