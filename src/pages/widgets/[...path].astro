@@ -1,0 +1,108 @@
+---
+import Layout from "../../components/Layout.astro";
+
+export interface Props {
+  title: string;
+  files: Map<string, string>;
+}
+
+export async function getStaticPaths() {
+  const capitalize = (str: string) =>
+    str.charAt(0).toUpperCase() + str.slice(1);
+
+  const files = await Astro.glob<{
+    title: string;
+  }>("./**/*.md");
+
+  const rootDirs = new Map<string, string>();
+
+  const contents = new Map<string, typeof files>();
+
+  for (const file of files) {
+    const url = file.url;
+    if (!url) continue;
+    const dir = url.split("/").slice(1, -1).join("/");
+
+    if (dir.split("/").length === 2) {
+      rootDirs.set("/" + dir, capitalize(dir.split("/").pop()!));
+    }
+
+    const dirFiles = contents.get(dir) || [];
+    dirFiles.push(file);
+    contents.set(dir, dirFiles);
+  }
+
+  const res = Array.from(contents.entries()).map(([dir, files]) => ({
+    params: {
+      path: dir.split("/").pop(),
+    },
+    props: {
+      title: capitalize(dir.split("/").pop()!),
+      files: files.reduce((acc, file) => {
+        acc.set(file.url!, capitalize(file.frontmatter.title));
+        return acc;
+      }, new Map<string, string>()),
+    },
+  }));
+
+  res.unshift({
+    params: {
+      path: undefined,
+    },
+    props: {
+      title: "Widgets",
+      files: rootDirs,
+    },
+  });
+  console.log(res.map((r) => r.params));
+  console.log(res.map((r) => r.props));
+
+  return res;
+}
+
+const backLink = Astro.url.pathname.split("/").slice(1, -2).join("/") + "/";
+console.log(backLink);
+
+const { files, title } = Astro.props;
+---
+
+<Layout title={title}>
+  <div class="container mx-auto py-6">
+    <h1
+      class="my-4 text-4xl leading-[3rem] font-bold text-gray-900 flex items-center gap-3"
+    >
+      <!-- An svg back arrow -->
+      <a
+        href={backLink === "/" ? "/" : "/" + backLink}
+        class="text-gray-500 hover:text-gray-700"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+      </a>
+      {title}
+    </h1>
+    {
+      Array.from(files.entries()).map(([href, title]) => (
+        <>
+          <a
+            href={href}
+            class="block mb-4 text-xl font-bold text-blue-800 px-6 py-4 rounded hover:bg-blue-400/20 max-w-max transition-colors"
+          >
+            {title}
+          </a>
+        </>
+      ))
+    }
+  </div>
+</Layout>

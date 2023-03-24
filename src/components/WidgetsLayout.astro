@@ -1,0 +1,108 @@
+---
+import Layout from "./Layout.astro";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+  };
+}
+
+const {
+  frontmatter: { title },
+} = Astro.props;
+
+const backLink =
+  "/" + Astro.url.pathname.split("/").slice(1, -1).join("/") + "/";
+---
+
+<Layout title={`${title} | widgets`}>
+  <script
+    slot="head"
+    type="text/javascript"
+    src="https://dartpad.dev/inject_embed.dart.js"
+    defer
+  ></script>
+  <div class="container mx-auto px-4 py-6">
+    <h1
+      class="mb-4 text-4xl leading-[3rem] font-bold text-gray-900 flex items-center gap-3"
+    >
+      <!-- An svg back arrow -->
+      <a href={backLink} class="text-gray-500 hover:text-gray-700">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+      </a>
+      {title}
+    </h1>
+    <!-- An alert that recomends a larger screen if the screen is too small -->
+    <div class="block md:hidden">
+      <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+        <div class="flex">
+          <div class="flex-shrink-0">
+            <!-- Heroicon name: solid/exclamation -->
+            <svg
+              class="h-5 w-5 text-yellow-400"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 2a10 10 0 100-20 10 10 0 000 20zM9 7a1 1 0 112 0v4a1 1 0 11-2 0V7zm1-5a1 1 0 11-2 0 1 1 0 012 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div class="ml-3">
+            <p class="text-sm text-yellow-700">
+              This page is best viewed on a larger screen.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A notification that tells the user to Modify the code and press the run button to see the changes. -->
+    <div class="my-4 bg-blue-50 border-l-4 border-blue-400 p-4">
+      <div class="flex">
+        <div class="flex-shrink-0">
+          <!-- Heroicon name: solid/information-circle -->
+          <svg
+            class="h-5 w-5 text-blue-400"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 2a10 10 0 100-20 10 10 0 000 20zM9 7a1 1 0 112 0v4a1 1 0 11-2 0V7zm1-5a1 1 0 11-2 0 1 1 0 012 0z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        <div class="ml-3">
+          <p class="text-sm text-blue-700">
+            Modify the code and press the run button to see the changes.
+          </p>
+        </div>
+      </div>
+    </div>
+    <slot />
+  </div>
+</Layout>
+
+<style lang="postcss">
+  :global(iframe) {
+    @apply w-full h-[60vh] md:h-auto md:max-w-6xl aspect-video;
+  }
+</style>
