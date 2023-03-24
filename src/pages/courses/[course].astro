@@ -23,7 +23,7 @@ const { course } = Astro.props;
 ---
 
 <Layout title={course.title}>
-  <div class="main mx-auto px-4 py-6">
+  <main class="container mx-auto px-4 py-6">
     <div class="flex flex-col gap-4 md:flex-row mb-4">
       <img
         src={course.image.src}
@@ -52,10 +52,10 @@ const { course } = Astro.props;
       <p class="text-center text-lg">30 days money back guarantee</p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-4">
+    <div>
       {
         Object.entries(course.chapters).map(([chapter, contents]) => (
-          <div class="bg-white shadow rounded w-full max-w-xl">
+          <div class="bg-white shadow rounded w-full mx-auto mb-4 lg:w-[49%]">
             <h2 class="text-xl font-bold mb-2 bg-gray-200 p-4">{chapter}</h2>
             <ul class="px-12 py-4 list-disc">
               {contents.map((content) => (
@@ -66,5 +66,11 @@ const { course } = Astro.props;
         ))
       }
     </div>
-  </div>
+    <a
+      href={course.checkout}
+      class="block text-center md:max-w-[49%] mx-auto bg-indigo-500 px-6 py-4 text-sm font-semibold text-white rounded-md hover:bg-indigo-600"
+    >
+      Buy Now
+    </a>
+  </main>
 </Layout>
