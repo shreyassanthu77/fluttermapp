@@ -1,6 +1,6 @@
 ---
 title: Container
-layout: ../../../components/WidgetsLayout.astro
+layout: ../../../components/widgets/WidgetsLayout.astro
 ---
 
 ```dart

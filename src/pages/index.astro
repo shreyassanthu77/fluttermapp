@@ -1,9 +1,9 @@
 ---
-import Hero from "../components/Hero.astro";
+import Hero from "../components/home/Hero.astro";
 import Layout from "../components/Layout.astro";
 ---
 
-<Layout title="%s | Home">
+<Layout>
   <Hero />
 
   <section class="container mx-auto px-4 py-20">
@@ -18,7 +18,7 @@ import Layout from "../components/Layout.astro";
       students have already taken our courses
     </p>
     <a
-      href="#"
+      href="/courses"
       class="block max-w-max text-white bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-md px-6 py-4 mt-6 mx-auto transition-all"
       >Start learning now</a
     >

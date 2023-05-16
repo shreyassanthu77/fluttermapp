@@ -1,9 +1,9 @@
 ---
-import heroImg from "../assets/hero-img.webp";
+import heroImg from "../../assets/hero-img.webp";
 ---
 
 <main
-  class="container h-[80vh] md:h-auto mx-auto py-6 px-8 flex flex-col md:flex-row gap-6 items-center bg-blue-400/5 rounded-3xl mt-4"
+  class="container h-[80vh] md:h-auto mx-auto py-6 px-8 flex flex-col md:flex-row gap-6 items-center justify-evenly bg-blue-400/5 rounded-3xl mt-4"
 >
   <img
     src={heroImg.src}
@@ -12,7 +12,7 @@ import heroImg from "../assets/hero-img.webp";
   />
   <div>
     <h1
-      class="font-bold text-4xl text-center md:text-left lg:text-5xl lg:leading-[4.3rem] max-w-2xl"
+      class="max-w-[30ch] font-bold text-4xl text-center md:text-left lg:leading-[3.3rem]"
     >
       The Step by step guide to learn
       <span
@@ -34,7 +34,7 @@ import heroImg from "../assets/hero-img.webp";
         placeholder="Enter your email"
       />
       <button
-        class="bg-gradient-to-r from-blue-800 to-blue-500 text-white p-4 rounded-lg md:rounded-l-none text-lg font-bold outline-none focus:ring active:scale-95 transition-all"
+        class="bg-gradient-to-r min-w-max from-blue-800 to-blue-500 text-white p-4 rounded-lg md:rounded-l-none font-bold outline-none focus:ring active:scale-95 transition-all"
       >
         Get it for free
       </button>

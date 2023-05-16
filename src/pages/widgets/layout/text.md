@@ -1,6 +1,6 @@
 ---
 title: Text
-layout: ../../../components/WidgetsLayout.astro
+layout: ../../../components/widgets/WidgetsLayout.astro
 ---
 ```dart
 import 'package:flutter/material.dart';
