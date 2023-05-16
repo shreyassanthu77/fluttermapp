@@ -58,8 +58,6 @@ export async function getStaticPaths() {
   return res;
 }
 
-const backLink = Astro.url.pathname.split("/").slice(1, -2).join("/") + "/";
-
 const { files, title } = Astro.props;
 ---
 
@@ -68,25 +66,6 @@ const { files, title } = Astro.props;
     <h1
       class="my-6 text-4xl leading-[3rem] font-bold text-gray-900 flex items-center gap-3"
     >
-      <!-- An svg back arrow -->
-      <a
-        href={backLink === "/" ? "/" : "/" + backLink}
-        class="text-gray-500 hover:text-gray-700"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-        </svg>
-      </a>
       {title}
     </h1>
     {
